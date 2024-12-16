@@ -13,6 +13,7 @@ import SearchBar from '../components/SearchBar.tsx';
 import Filters from '../components/Filters.tsx';
 import ArticleCard from '../components/ArticleCard.tsx';
 import { RootState } from '../store/index.ts';
+import { useNavigate } from 'react-router-dom';
 
 const PersonalizedNewsFeed: React.FC = () => {
   const dispatch = useDispatch();
@@ -26,9 +27,12 @@ const PersonalizedNewsFeed: React.FC = () => {
   const [dateFilter, setDateFilter] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [sourceFilter, setSourceFilter] = useState('');
-  //   const [selectedDate, setSelectedDate] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!token) {
+      navigate('/login');
+    }
     const fetchNews = async () => {
       dispatch(setLoading(true));
       try {

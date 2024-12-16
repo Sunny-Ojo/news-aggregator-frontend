@@ -7,17 +7,26 @@ import {
   fetchAuthors,
 } from '../services/filtersService.ts';
 import { AppDispatch, RootState } from '../store/index.ts';
-import { updatePreferences } from '../features/preferences/preferencesSlice.ts';
+import { useNavigate } from 'react-router-dom';
+import { updatePreferences } from '../features/auth/authSlice.ts';
 
 const Profile: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const token = useSelector((state: RootState) => state.auth.token);
 
+  const preferences = useSelector(
+    (state: RootState) =>
+      state.auth.user?.preferences || {
+        sources: [],
+        categories: [],
+        authors: [],
+      }
+  );
   const {
     categories: storedCategories,
     sources: storedSources,
     authors: storedAuthors,
-  } = useSelector((state: RootState) => state.preferences);
+  } = preferences;
 
   const [selectedCategories, setSelectedCategories] = useState<any[]>([]);
   const [selectedSources, setSelectedSources] = useState<any[]>([]);
@@ -28,8 +37,12 @@ const Profile: React.FC = () => {
   const [apiCategories, setApiCategories] = useState<string[]>([]);
   const [apiSources, setApiSources] = useState<string[]>([]);
   const [apiAuthors, setApiAuthors] = useState<string[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!token) {
+      navigate('/login');
+    }
     const fetchData = async () => {
       try {
         const [categoriesData, sourcesData, authorsData] = await Promise.all([
@@ -60,7 +73,14 @@ const Profile: React.FC = () => {
     };
 
     fetchData();
-  }, [dispatch, storedCategories, storedSources, storedAuthors]);
+  }, [
+    dispatch,
+    storedCategories,
+    storedSources,
+    storedAuthors,
+    navigate,
+    token,
+  ]);
 
   const handleSubmit = async () => {
     const dataUpdate = {
@@ -81,7 +101,7 @@ const Profile: React.FC = () => {
   };
 
   return (
-    <div className="p-6 my-16 max-w-4xl mx-auto">
+    <div className="max-w-2xl w-full mx-auto mt-10 p-6 border rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4">Profile Preferences</h1>
 
       <div className="mb-6">

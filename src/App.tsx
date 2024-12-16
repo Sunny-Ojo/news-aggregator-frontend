@@ -12,15 +12,24 @@ import Footer from './pages/Footer.tsx';
 const App: React.FC = () => {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/personalized-feed" element={<PersonalizedNewsFeed />} />
-      </Routes>
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+
+        <main className="flex-1 flex items-center justify-center">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route
+              path="/personalized-feed"
+              element={<PersonalizedNewsFeed />}
+            />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
     </Router>
   );
 };

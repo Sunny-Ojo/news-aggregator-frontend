@@ -2,7 +2,7 @@
 
 This is a news aggregator Frontend project that displays news articles with the ability to search, filter data
 
-git clone (https://github.com/Sunny-Ojo/news-aggregator-frontend.git).
+git clone https://github.com/Sunny-Ojo/news-aggregator-frontend.git
 
 ## How to run this project
 
