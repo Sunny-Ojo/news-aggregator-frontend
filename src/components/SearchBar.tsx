@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Input from './Input.tsx';
 
 interface SearchBarProps {
   keyword: string;
@@ -22,7 +23,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ keyword, onKeywordChange }) => {
 
   return (
     <div className="mb-6">
-      <input
+      <Input
+        name="search"
         type="text"
         value={inputValue}
         onChange={handleInputChange}

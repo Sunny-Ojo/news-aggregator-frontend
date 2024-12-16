@@ -47,7 +47,7 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-4 border rounded-lg">
+    <div className="max-w-md w-full mx-auto mt-10 p-6 border rounded-lg shadow-md">
       <h2 className="text-2xl mb-4">Register</h2>
       {errors.general && (
         <div className="text-red-500 text-center mb-4">{errors.general}</div>
