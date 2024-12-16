@@ -10,8 +10,11 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy the entire application
+# Copy the rest of the application files
 COPY . .
+
+# Copy .env.example to .env
+RUN cp .env.example .env
 
 # Expose the development port
 EXPOSE 3000
