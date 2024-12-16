@@ -33,7 +33,7 @@ const Register: React.FC = () => {
 
     try {
       await dispatch(registerUser(userData)).unwrap();
-      navigate('/');
+      navigate('/profile');
     } catch (error: any) {
       if (error?.errors) {
         setErrors(error.errors);
