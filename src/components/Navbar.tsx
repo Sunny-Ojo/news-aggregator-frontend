@@ -36,10 +36,7 @@ const Navbar: React.FC = () => {
               <Link to="/profile" className="text-white">
                 Profile
               </Link>
-              <button
-                onClick={handleLogout}
-                className="text-white bg-red-500 px-4 py-1 rounded-md"
-              >
+              <button onClick={handleLogout} className="text-white  rounded-md">
                 Logout
               </button>
             </>
