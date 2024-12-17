@@ -37,5 +37,5 @@ export const fetchPersonalizedFeed = async (
     params: { page, keyword, date, category, source },
   });
 
-  return { articles: data.data, last_page: data.last_page };
+  return { articles: data.data, last_page: data.meta.last_page };
 };

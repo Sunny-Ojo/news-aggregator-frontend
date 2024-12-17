@@ -93,6 +93,7 @@ const Profile: React.FC = () => {
     try {
       await dispatch(updatePreferences(dataUpdate));
       setSuccessMessage('Preferences saved successfully!');
+      navigate('/personalized-feed');
       setErrorMessage('');
     } catch (error) {
       setErrorMessage('Failed to save preferences. Please try again.');
