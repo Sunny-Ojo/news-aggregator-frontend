@@ -73,14 +73,7 @@ const Profile: React.FC = () => {
     };
 
     fetchData();
-  }, [
-    dispatch,
-    storedCategories,
-    storedSources,
-    storedAuthors,
-    navigate,
-    token,
-  ]);
+  }, [dispatch, navigate, token]);
 
   const handleSubmit = async () => {
     const dataUpdate = {
